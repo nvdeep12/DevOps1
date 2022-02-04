@@ -59,6 +59,13 @@ node {
               
               // need to pull out assigned username
               if(isUnix()) {
+                  //navdeep code start
+                  sh returnStdout: true, script: "${toolbelt} mkdir convertedcode"
+                  sh returnStdout: true, script: "${toolbelt} force:source:convert -r force-app/ -d convertedcode"
+                  sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -u ${HUB_ORG} -d convertedcode"
+                  sh returnStdout: true, script: "${toolbelt} rm -R convertedcode"
+                  sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy:report"
+                  //navdeep code end
                 rmsg = sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -d manifest/ -u ${HUB_ORG}"
               } else {
                 rmsg = bat returnStdout: true, script: "${toolbelt} force:mdapi:deploy -d manifest/ -u ${HUB_ORG}"
