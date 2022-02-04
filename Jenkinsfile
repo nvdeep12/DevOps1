@@ -65,7 +65,7 @@ node {
                   //sh returnStdout: true, script: "${toolbelt} force:source:convert -r force-app/ -d convertedcode"
                   sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -u ${HUB_ORG} -d convertedcode"
                   //sh returnStdout: true, script: "rm -R convertedcode"
-                  sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy:report"
+                  //sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy:report"
                   //navdeep code end
                 rmsg = sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -d manifest/ -u ${HUB_ORG}"
               } else {
